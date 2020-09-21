@@ -1,0 +1,39 @@
+#container{
+    display: grid;
+    height: 600px;
+    width: 600px;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+    margin: auto;
+}
+
+.board-square{
+    border: 1px solid black;
+    text-align: center;
+    font-size: 100px;
+    line-height: 200px;
+}
+
+#announce{
+    margin: auto;
+    padding-top: 20px;
+    height: 70px;
+    width: 600px;
+    text-align: center;
+    font-size: 30px;
+}
+
+#reset-div{
+    text-align: center;
+}
+
+#reset{
+    background-color: #f2f2f2;
+    color: #5F6368;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    height: 36px;
+    font-size: 14px;
+    text-align: center;
+    width: 100px;
+}
