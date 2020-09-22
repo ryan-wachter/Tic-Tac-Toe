@@ -1,9 +1,18 @@
 let board = [];
 let turn = 0;
-const resetButton = document.getElementById('reset');
-resetButton.addEventListener('click', resetGame);
+
+function Player(playerName){
+    this.name = playerName; 
+
+    return {name};
+}
+let playerOne = new Player();
+let playerTwo = new Player();
+
 
 const gameBoard = (() => {
+    const resetButton = document.getElementById('reset');
+    resetButton.addEventListener('click', resetGame);
     for(i = 0; i < 9; i++){
         const square = document.createElement('div');
         const container = document.getElementById('container');
@@ -31,6 +40,8 @@ const gameBoard = (() => {
         });
         board[i] = square;
     }
+    playerOne.name = prompt('Enter the name of player one: ');
+    playerTwo.name = prompt('Enter the name of player two: ');
 })();
 
 function checkWin(move){
@@ -44,17 +55,20 @@ function checkWin(move){
                 count++;
                 if(count === 3){
                     if(move === 'X'){
-                        announce.textContent = 'Player 1 wins!';
+                        announce.textContent = playerOne.name + ' wins!';
                         for(i = 0; i < 9; i++){
                             board[i].classList.add('frozen');
                         }
                     }
                     else if(move === 'O'){
-                        announce.textContent = 'Player 2 wins!';
+                        announce.textContent = playerTwo.name + ' wins!';
                         for(i = 0; i < 9; i++){
                             board[i].classList.add('frozen');
                         }
                     }
+                }
+                if(turn === 9 && announce.textContent === ''){
+                    announce.textContent = 'Tie game! Reset and try again.'
                 }
             }
         })
@@ -70,7 +84,3 @@ function resetGame(){
     }
 }
 
-const Player = (name) => {
-
-    return {name};
-}
